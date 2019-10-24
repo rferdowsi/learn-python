@@ -127,6 +127,7 @@ output_list.append('count = %d\n' % find_count(input))
 # print (find_even(input))
 # print (find_odd(input))
 # print (find_median(input))
+output_list.append('std_dev = %d\n' % std_dev(input))
 print (std_dev(input))
 
 write_file('output.txt', output_list)
