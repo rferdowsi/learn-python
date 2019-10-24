@@ -1,5 +1,11 @@
 import logging
 
+
+# -----------------------------------------
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
+
+# -----------------------------------------
+
 def find_count(list):
     counter = 0
     for element in list:
@@ -63,9 +69,19 @@ def find_median(list):
     else:
         return list[int(len(list)/2)]
 
-def find_stdev(list):
-    import statistics
-    statistics.find_stdev(list)
+
+def std_dev(list):
+    n = len(list)
+    logging.debug('n = %d', n)
+    mean = find_avg(list)
+    logging.debug('mean = %d', mean)
+    # ss =  sum of square deviaton
+    variance = sum((x - mean) ** 2 for x in list)
+    logging.debug('variance = %d', variance)
+
+    # return ss
+    answer = (variance / (n-1)) ** 0.5 
+    return answer
 
 def read_input_file(filename):
     logging.info('Reading input file = %s', filename)
@@ -95,18 +111,7 @@ input_old = [
 
 
 # -----------------------------------------
-logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
-
 input = read_input_file('input2.txt')
-
-# with open('output.txt', 'w') as file_handle:
-#      file_handle.write('count = %d\n' % find_count(input))
-#      file_handle.write('sum = %d\n' % find_sum(input))
-    #  file_handle.write(find_count(input)))
-    #  file_handle.write(find_count(input)))
-    #  file_handle.write(find_count(input)))
-    #  file_handle.write(find_count(input)))
-    #  file_handle.write(find_count(input)))
 
 output_list = []
 output_list.append('count = %d\n' % find_count(input))
@@ -122,6 +127,6 @@ output_list.append('count = %d\n' % find_count(input))
 # print (find_even(input))
 # print (find_odd(input))
 # print (find_median(input))
-# print (find_stdev(input))
+print (std_dev(input))
 
 write_file('output.txt', output_list)
