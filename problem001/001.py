@@ -110,7 +110,6 @@ input_old = [
 ]
 
 
-
 # -----------------------------------------
 input = read_input_file('input2.txt')
 
