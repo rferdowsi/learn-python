@@ -35,7 +35,7 @@ def find_min2(list):
     return minimum
 
 def find_max2(list):
-    maximum= 0 # Int.max_value
+    maximum= 0 # Int.min_value
     for element in list:
         if element > maximum:
             maximum = element
@@ -75,11 +75,8 @@ def std_dev(list):
     logging.debug('n = %d', n)
     mean = find_avg(list)
     logging.debug('mean = %d', mean)
-    # ss =  sum of square deviaton
     variance = sum((x - mean) ** 2 for x in list)
     logging.debug('variance = %d', variance)
-
-    # return ss
     answer = (variance / (n-1)) ** 0.5 
     return answer
 
